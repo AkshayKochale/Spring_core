@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context = "http://www.springframework.org/schema/context"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config/>
+    
+    
+    <bean id ="college" class="springdemo.College" >
+        <property name="collegeName" value="DD COllege"/>
+        <property name="principal" value="Kochale"/>
+        <property name="date" value="20"/>
+        <property name="teacher" >
+            <list>
+                <value>saroj</value>
+                <value>anuj</value>
+                <value>manoj</value>
+            </list>
+        </property>
+        <property name="arr">
+            <array>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>AKHSAY</value>
+            </array>
+        </property>
+
+    </bean>  
+
+
+<!--    <bean id ="student" class="springdemo.Student">
+
+                <property name="rollNO" value="010"/>
+        <property name="name" value="Akshay"/>
+        <property name="branch" value="Science"/>
+        <property name="col" ref="college"/>
+        <constructor-arg name="rollNO" value="10"> </constructor-arg>
+        <constructor-arg name="name" value="Akshay"> </constructor-arg>
+        <constructor-arg name="branch" value="Science"> </constructor-arg>
+        <constructor-arg name="col" ref="college"></constructor-arg>
+
+    </bean>-->
+
+
+    <bean id="jcon" class="JdbcUsingSPring.jdbcConnector"/>
+<!--        <property name="username" value="root"/>
+        <property name="password" value="12345"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?useSSL=false"/>
+        <property name="clName" value="com.mysql.jdbc.Driver"/>
+        
+    </bean>-->
+
+    <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="12345"/>
+        
+    </bean>
+
+        <bean id ="jdbcTemp" class="org.springframework.jdbc.core.JdbcTemplate">
+            <constructor-arg name="dataSource" ref="ds" ></constructor-arg> 
+        
+        </bean>
+
+  
+
+
+</beans>
